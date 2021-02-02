@@ -1,0 +1,152 @@
+html, body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+}
+
+table, td, tr {
+  font-size: 12px;
+}
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 576px) {
+  .container-menu {
+    max-width: 510px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-menu  {
+    max-width: 690px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-menu  {
+    max-width: 930px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-menu  {
+    max-width: 1110px;
+  }
+}
+
+/* cores para texto e svg */
+.tx-purple { color: #6840c5; }
+.tx-amarelo { color: rgb(243, 241, 118); }
+.tx-verde { color: rgb(0, 255, 21); }
+.tx-vermelho { color: rgb(250, 57, 57); }
+.tx-azul { color: rgb(47, 120, 255); }
+.tx-preto { color: rgb(0, 0, 0); }
+.tx-branco { color: rgb(255, 255, 255); }
+.tx-laranja { color: rgb(236, 142, 65); }
+.tx-cinza { color: rgb(143, 143, 143); }
+
+/* cores para background */
+.bg-purple { background-color: rgb(185, 132, 255); }
+.bg-amarelo { background-color: rgb(255, 253, 139); }
+.bg-verde { background-color: rgb(139, 255, 151); }
+.bg-vermelho { background-color: rgb(255, 140, 140); }
+.bg-azul { background-color: rgb(139, 180, 255); }
+.bg-preto { background-color: rgb(34, 34, 34); }
+.bg-branco { background-color: rgb(255, 255, 255); }
+.bg-laranja { background-color: rgb(255, 192, 140); }
+
+.bold {
+  font-weight: bold;
+}
+
+.bg-body{
+  background-color: darkseagreen;
+}
+
+.container-menu {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.th {
+  text-align: center;
+  vertical-align: middle;
+}
+.botao{
+  float:right
+}
+
+.botaoW {
+  width: 100%;
+  height: 20px;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.hoverInte {
+  cursor: help;
+}
+
+.mt-96 {
+  margin-top: 2rem !important;
+}
+
+.img-receita-index {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.img-receita {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.mt-45 {
+  margin-top: 2.5rem !important;
+}
+.w100 {
+  width: 100% !important;
+}
+
+.h100 {
+  height: 100% !important;
+}
+
+.wh100 {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.Cinza {
+  background-color: #bbbbbb;
+}
