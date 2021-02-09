@@ -23,10 +23,10 @@ function __autoload($Class){
 }
 
 // TRATAMENTO DE ERROS # CSS constantes
-define('AD_SUSSESS', 'alert-success');
-define('AD_INFO', 'alert-info');
-define('AD_ALERT', 'alert-warning');
-define('AD_ERROR', 'alert-danger');
+define('AD_SUSSESS',	'alert-success');
+define('AD_INFO',			'alert-info');
+define('AD_ALERT',		'alert-warning');
+define('AD_ERROR',		'alert-danger');
 
 /**
  * ADErro :: Exibe erros lançados MYSQL
@@ -333,40 +333,36 @@ function baseMenu(){
 	$financa =	getSvg('newspaper', '30', 'tx-azul');
 	$receita =	getSvg('book', '30', 'tx-laranja');
 	$estoque =	getSvg('hdd-rack', '30', 'tx-branco');
+	$logoff  =  '';
 	// $relatorio =	getSvg('journal-text', '30', 'tx-vermelho');
+	
 	return "
-		
+		<a class=\"mr-3\"><img class=\"mr-3\" src=\"../app/imgs/flor.ico\" width=\"48\" height=\"48\"></a>
 
-	<a href=\"http://$_SERVER[HTTP_HOST]/www.encantosdoflorescer.br/\"
-			data-toggle=\"tooltip\" 
-			data-placement=\"top\" 
-			title=\"Finanças\"
-			class=\"mr-3\"><img class=\"mr-3\" src=\"../app/imgs/flor.ico\" width=\"48\" height=\"48\">	
-		</a>
-
-
-		<a href=\"http://$_SERVER[HTTP_HOST]/www.encantosdoflorescer.br/financas\"
+		<a href=\"http://$_SERVER[HTTP_HOST]/encantosdoflorescer/financas\"
 			data-toggle=\"tooltip\" 
 			data-placement=\"top\" 
 			title=\"Finanças\"
 			class=\"mr-3\">{$financa}
 		</a>
 
-		<a href=\"http://$_SERVER[HTTP_HOST]/www.encantosdoflorescer.br/receitas\"
+		<a href=\"http://$_SERVER[HTTP_HOST]/encantosdoflorescer/receitas\"
 			data-toggle=\"tooltip\" 
 			data-placement=\"top\" 
 			title=\"Receitas\" 
 			class=\"mr-3\">{$receita}
 		</a>
 
-		<a href=\"http://$_SERVER[HTTP_HOST]/www.encantosdoflorescer.br/estoque\"
+		<a href=\"http://$_SERVER[HTTP_HOST]/encantosdoflorescer/estoque\"
 			data-toggle=\"tooltip\" 
 			data-placement=\"top\" 
 			title=\"Estoque\" 
 			class=\"mr-3\">{$estoque}
 		</a>
 
-		
+		<a href=\"http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php?logoff=true\" title=\"Deslogar do Sistema\">
+			<span>Deslogar !</span>
+		</a>
 	";
 }
 
