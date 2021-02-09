@@ -106,3 +106,46 @@
     endif;
   endif;
 
+  if (isset($_POST['lacarProducao']) && $_POST['lacarProducao'] =='voltarEstoque'):
+    $vuni = $_POST['valor'];
+    $vowels = array(" ", "R$", ",", "۞", "%", "Ω", "&");
+    $vuni = str_replace($vowels, "",  $vuni);
+    $vtotal = $vuni * $_POST['quantidadev'];
+    $DANIELA=$_POST['idTabSaida'];
+    
+
+    
+    $dados = [
+      'id_produto'          => $_POST['producao_id'],
+      'data_volta'          => date('Y/m/d'),
+      'de_onde_voltou'      => $_POST['destino_apelido'],
+      'data_vencimento'     => $_POST['data_validade'],
+      'quantidade'          => $_POST['quantidadev'],
+      'descricao'           => $_POST['obs_volta']
+    ];
+    $voltar = new Create;
+    $voltar->ExeCreate('volta_estoque',$dados);
+
+
+    if($voltar->getResult()>0):
+      $updateSaida = new Update;
+      $troca=['quantidade'=> $_POST['quantidade']];
+
+      $updateSaida->ExeUpdate('saidas', $troca, "WHERE id=:id", "id={$DANIELA}");
+      if($updateSaida->getResult()>0):
+        
+        $updateProducao = new Update;
+        $updateSaida->ExeUpdate('producao', $troca, "WHERE id=:id", "id={$_POST['producao_id']}");
+
+PAREI AQUI TEM QUE FAZER O COISO MUDAR VALOR NA TEBELA PRODUCAO 
+
+         header("Location: ../informar-venda.php?retorno=Ok&produto={$_POST['produto_nome']}&qnt={$dados['quantidade']}&valort={$vtotal}&vendedor={$_POST['destino_apelido']}");
+      endif;
+
+    else:
+      header("Location: ../informar-venda.php?retorno=Nok");
+    endif;
+
+  endif;
+
+

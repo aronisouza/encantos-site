@@ -1,5 +1,17 @@
 <?php
+  session_start();
+  
   require('../app/class/Config.inc.php');
+
+  $login = new Login(3);
+  
+  if (!$login->CheckLogin()):
+		unset($_SESSION['userlogin']);
+		header('Location: http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php');
+	else :
+		$userlogin = $_SESSION['userlogin'];
+	endif;
+  
   $corJanelaMensagem='bg-branco';
   $textoJanela='Selecione um produto no campo<br /> --- Escolha um Produto ---';
   $jnSVG='exclamation-circle';

@@ -1,5 +1,16 @@
 <?php
+  session_start();
+  
   require('../app/class/Config.inc.php');
+
+  $login = new Login(3);
+  
+  if (!$login->CheckLogin()):
+		unset($_SESSION['userlogin']);
+		header('Location: http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php');
+	else :
+		$userlogin = $_SESSION['userlogin'];
+	endif;
   
   if (isset($_POST['salvarNota'])):
     $Form = [
@@ -118,6 +129,7 @@
       </div>
     </div>
   </div>
+  
   <div class="my-3 p-3 bg-white rounded shadow-sm">
     <h6 class="border-bottom border-gray pb-2 mb-0">Informe todos os campos</h6>
     <form class="mt-4" id="formid" method="post" enctype='multipart/form-data'>

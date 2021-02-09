@@ -1,5 +1,16 @@
 <?php
+  session_start();
+  
   require('../app/class/Config.inc.php');
+
+  $login = new Login(3);
+  
+  if (!$login->CheckLogin()):
+		unset($_SESSION['userlogin']);
+		header('Location: http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php');
+	else :
+		$userlogin = $_SESSION['userlogin'];
+	endif;
 
   $URL_ATUAL= "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   $nomeReceita = isset($_GET['nomereceita']) ? $_GET['nomereceita'] : 0;

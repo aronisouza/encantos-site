@@ -15,8 +15,9 @@
   $corJanelaMensagem='bg-branco';
   $textoJanela='
     Escolha revendedor para listar os produtos que estão com ele<br />
-    Depois escolha o produto qual será marcado como vendido
+    Depois escolha o produto que voltará para estoque
   ';
+
   $jnSVG='exclamation-circle';
   $txCor='tx-preto';
   $select=null;
@@ -172,7 +173,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="lancamento-producao.php">Lançar Produção</a></li>
         <li class="nav-item"><a class="nav-link" href="transferir-saida.php">Transferir para SAIDA</a></li>
-        <li class="nav-item"><a class="nav-link active">Informar VENDA</a></li>
+        <li class="nav-item"><a class="nav-link" href="informar-venda.php">Informar VENDA</a></li>
         <li class="nav-item"><a class="nav-link" href="fiado.php">Fiado</a></li>
       </ul>
       
@@ -186,7 +187,7 @@
           <?php echo getSvg($jnSVG, '63', $txCor); ?>
         </div>
         <div class="p-2 w-100">
-          <h5 class="alert-heading <?php echo $txCor; ?>">Informar uma Venda</h5>
+          <h5 class="alert-heading <?php echo $txCor; ?>">Informar uma volta para estoque</h5>
           <hr>
           <p class="<?php echo $txCor; ?>"><?php echo $textoJanela;?></p>
         </div>
@@ -219,6 +220,7 @@
         <input type="hidden" id="alteracao"       name="alteracao"        value="<?php echo $preecherForm['alteracao'];?>">
         <input type="hidden" id="volume_novo"     name="volume_novo"      value="<?php echo $preecherForm['volume_novo'];?>">
         <input type="hidden" id="data_saida"      name="data_saida"       value="<?php echo $preecherForm['data_saida'];?>">
+        <input type="hidden" id="valor"           name="valor"            value="0,00">
 
         <div class="form-row mt-4">
           <div class="form-group col-md-6">
@@ -245,54 +247,35 @@
           </div>
         </div>
 
-        <h6 class="border-bottom border-gray pb-2 mb-3 mt-5">Informações de Venda</h6>
+        <h6 class="border-bottom border-gray pb-2 mb-3 mt-5">Informações de Volta para estoque</h6>
         
         <div class="form-row">
           <div class="form-group col-md-3">
-            <label for="data_venda">Data de Venda</label>
+            <label for="data_venda">Data da volta</label>
             <input type="date" class="form-control" id="data_venda " name="data_venda" >
           </div>
 
-
           <div class="form-group col-md-3">
-            <label for="valor">Valor que foi vendido</label>
-            <input type="text" class="form-control" id="valor" name="valor" placeholder="R$ 0.00">
-          </div>
-
-          <div class="form-group col-md-3">
-            <label for="quantidadev">Quantidade Venda</label>
+            <label for="quantidadev">Quantidade</label>
             <input type="number" class="form-control" id="quantidadev" name="quantidadev" placeholder="0" min="0" max="<?php echo $preecherForm['quantidade'];?>">
           </div>
 
           <div class="form-group col-md-3">
-            <label for="forma_pagamento">Forma de Pagamento</label>
+            <label for="forma_pagamento">Voltar</label>
             <select id="forma_pagamento" name="forma_pagamento" class="form-control hover">
-              <option>Caixa</option>
-              <option>Dinheiro</option>
-              <option>Itaú</option>
-              <option>Máquina de Cartão</option>]
-              <option>Mercado Pago</option>
-              <option>NuBank</option>
-              <option>PicPay</option>
-              <option>PIX</option>
-              
-              <option disabled> -------------------- </option>
-              <option>Fiado</option>
-              <option>Quebras</option>
-              <option>Outros</option>
+              <option>Voltou para estoque</option>
             </select>
           </div>
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="obs_forma_pagamento">Obs na Forma de Pagamento</label>
-            <input type="text" class="form-control" id="obs_forma_pagamento" name="obs_forma_pagamento">
+          <div class="form-group col-md-10">
+            <label for="obs_volta">Porque está voltando?</label>
+            <input type="text" class="form-control" id="obs_volta" name="obs_volta">
           </div>
-          <div class="form-group col-md-4"></div>
 
           <div class="form-group mt-96 ml-2">
-            <button class="btn btn-outline-info" type="submit" value="vender" name="lacarProducao">Verder</button>
+            <button class="btn btn-outline-info" type="submit" value="voltarEstoque" name="lacarProducao">VOLTAR</button>
           </div>
         </div>
 
@@ -323,12 +306,12 @@ $(document).ready(function(){
 
   $("#revendedor").change(function()
   {
-	  $(location).attr('href', 'http://localhost/encantosdoflorescer/estoque/informar-venda.php?id='+$('#revendedor').val());
+	  $(location).attr('href', 'http://localhost/encantosdoflorescer/estoque/informar-volta-para-estoque.php?id='+$('#revendedor').val());
   });
 
   $("#idTabSaida").change(function()
   {
-	  $(location).attr('href', 'http://localhost/encantosdoflorescer/estoque/informar-venda.php?id='+$('#revendedor').val()+'&idProduto='+$('#idTabSaida').val());
+	  $(location).attr('href', 'http://localhost/encantosdoflorescer/estoque/informar-volta-para-estoque.php?id='+$('#revendedor').val()+'&idProduto='+$('#idTabSaida').val());
   });
 
   $('#quantidadev').change(function()
