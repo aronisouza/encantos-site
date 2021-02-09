@@ -333,8 +333,6 @@ function baseMenu(){
 	$financa =	getSvg('newspaper', '30', 'tx-azul');
 	$receita =	getSvg('book', '30', 'tx-laranja');
 	$estoque =	getSvg('hdd-rack', '30', 'tx-branco');
-	$logoff  =  '';
-	// $relatorio =	getSvg('journal-text', '30', 'tx-vermelho');
 	
 	return "
 		<a class=\"mr-3\"><img class=\"mr-3\" src=\"../app/imgs/flor.ico\" width=\"48\" height=\"48\"></a>
