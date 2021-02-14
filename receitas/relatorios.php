@@ -1,16 +1,21 @@
 <?php
   session_start();
-  
   require('../app/class/Config.inc.php');
 
-  $login = new Login(3);
+  if(isset($_GET['logout']) && $_GET['logout']==1): 
+    $_SESSION = array();
+    session_destroy();
+    header('Location: ../index.php');
+  endif;
+
+  $_SESSION['user_logged'] = $_SESSION['user_logged'] ?? false;
+  if($_SESSION['user_logged']!=3) die("Página retrista volte e faca o login no sistema!!!");
   
-  if (!$login->CheckLogin()):
-		unset($_SESSION['userlogin']);
-		header('Location: http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php');
-	else :
-		$userlogin = $_SESSION['userlogin'];
-	endif;
+
+
+
+
+  
 
   $corJanelaMensagem = 'bg-branco';
   $txCor = 'tx-preto';

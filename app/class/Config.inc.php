@@ -1,6 +1,6 @@
 <?php
 // CONFIGRAÇÕES DO BANCO
-define('HOST', '');
+define('HOST', 'localhost');
 define('USER', '');
 define('PASS', '');
 define('DBSA', '');
@@ -358,7 +358,7 @@ function baseMenu(){
 			class=\"mr-3\">{$estoque}
 		</a>
 
-		<a href=\"http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php?logoff=true\" title=\"Deslogar do Sistema\">
+		<a href=\"?logout=1\" title=\"Deslogar do Sistema\">
 			<span>Deslogar !</span>
 		</a>
 	";

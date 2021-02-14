@@ -1,16 +1,15 @@
 <?php
   session_start();
-  
   require('../app/class/Config.inc.php');
 
-  $login = new Login(3);
-  
-  if (!$login->CheckLogin()):
-		unset($_SESSION['userlogin']);
-		header('Location: http://$_SERVER[HTTP_HOST]/encantosdoflorescer/index.php');
-	else :
-		$userlogin = $_SESSION['userlogin'];
-	endif;
+  if(isset($_GET['logout']) && $_GET['logout']==1): 
+    $_SESSION = array();
+    session_destroy();
+    header('Location: ../index.php');
+  endif;
+
+  $_SESSION['user_logged'] = $_SESSION['user_logged'] ?? false;
+  if($_SESSION['user_logged']!=3) die("Página retrista volte e faca o login no sistema!!!");
 
   $corJanelaMensagem = 'bg-branco';
   $txCor = 'tx-azul';
@@ -63,7 +62,7 @@
       <div class="p-2 w-100">
         <h5 class="alert-heading <?php echo $txCor; ?>">Titulo</h5>
         <hr>
-        <p class="<?php echo $txCor; ?>">This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <p class="<?php echo $txCor; ?>">...</p>
       </div>
     </div>
   </div>
@@ -72,8 +71,8 @@
     <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
     
     <div class="media text-muted pt-3">
-      <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+    <?php echo getSvg('exclamation-circle', '25','tx_preto'); ?>
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <strong class="d-block text-gray-dark">@username</strong>
         Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
       </p>
